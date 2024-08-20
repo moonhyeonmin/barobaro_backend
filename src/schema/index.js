@@ -1,17 +1,17 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const DB_uri=process.env.DB_uri;
-
 const conn = () => {
-    mongoose.connect(DB_uri, {dbName: 'baro_db'},)
-    .catch((err) => console.log(err)).then(() => console.log('db connect success'));
-};
 
-mongoose.connection.on('error', (err) => {
-    console.error('db connect error', err);
-});
+    const DB_uri=process.env.DB_uri;
+    
+    mongoose.connect(DB_uri, {dbName: 'baro_db'})
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => {
+        console.log(err);
+    })
+};
 
 export default conn;
