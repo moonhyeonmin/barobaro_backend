@@ -6,8 +6,9 @@ import { strict as assert } from "assert";
 const AuthRouter = Router();
 
 
-AuthRouter.post('/login', (req, res) => {
-    const userid = new userInfo(req.body);
+AuthRouter.post('/login', async (req, res) => {
+    const { body } = req;
+    const userid = userInfo.getMaxListeners(body.id);
 
     const loginFailedTest  = async () => {
         const delegator = sejongAuthDelegator();
@@ -55,4 +56,4 @@ AuthRouter.post('/login', (req, res) => {
     }
 });
 
-module.exports = AuthRouter;
+export default  AuthRouter;

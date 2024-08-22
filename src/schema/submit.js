@@ -14,4 +14,4 @@ const submitSchema = ({
 
 const submit = mongoose.model('submit', submitSchema);
 
-module.exports = submit;
+export { submitSchema, submit };
