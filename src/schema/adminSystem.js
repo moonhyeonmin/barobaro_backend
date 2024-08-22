@@ -19,4 +19,4 @@ const adminSchema = new Schemna({
 
 const admin = mongoose.model('admin', adminSchema);
 
-module.exports = admin;
+export {adminSchema, admin};

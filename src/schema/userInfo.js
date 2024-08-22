@@ -22,4 +22,4 @@ const userInfoSchema = new Schema({
 
 const userInfo = mongoose.model('userInfo', userInfoSchema);
 
-module.exports = userInfo;
+export  { userInfoSchema, userInfo};
