@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node --watch src/index.js"
   },
   "dependencies": {
     "@coffee-tree/sejong-auth-delegator": "^1.1.3",

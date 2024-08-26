@@ -7,8 +7,10 @@ const AuthRouter = Router();
 
 
 AuthRouter.post('/login', async (req, res) => {
-    const { body } = req;
-    const userid = userInfo.getMaxListeners(body.id);
+    
+    const { userid, password } = req.body;
+
+    process.env.TEST_USER_PASSWORD = password;
 
     const loginFailedTest  = async () => {
         const delegator = sejongAuthDelegator();

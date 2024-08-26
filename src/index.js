@@ -12,6 +12,10 @@ app.use(
 );
 app.use('/auth', AuthRouter);
 
+app.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
+
 const port = process.env.port;
 conn();
 
