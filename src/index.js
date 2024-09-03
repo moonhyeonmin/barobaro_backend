@@ -16,10 +16,10 @@ app.on('uncaughtException', function (err) {
     console.log(err);
 }); 
 
-const port = process.env.port;
+const port = process.env.PORT;
 conn();
 
 
 app.listen(port, (req, res) => {
-    console.log("listen at :  3000");
+    console.log("listen at :  " + port);
 })

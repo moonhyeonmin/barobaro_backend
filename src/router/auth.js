@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { LoginRequestDto,  sejongAuthDelegator } from "@coffee-tree/sejong-auth-delegator";
-import { userInfo } from "../schema/userInfo.js"
+import { userInfo } from "../schema/userInfo.js";
 import { strict as assert } from "assert";
 
 const AuthRouter = Router();
@@ -9,7 +9,7 @@ const AuthRouter = Router();
 AuthRouter.post('/login', async (req, res) => {
     
     const { userid, password } = req.body;
-
+    console.log(userid);
     process.env.TEST_USER_PASSWORD = password;
 
     const loginFailedTest  = async () => {
