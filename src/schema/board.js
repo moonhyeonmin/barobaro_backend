@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import Mongoose from "mongoose";
 
-const { Schema } = mongoose;
+const { Schema } = Mongoose;
 const boardSchema = new Schema({
     type: {
         type: Number,
@@ -25,9 +25,13 @@ const boardSchema = new Schema({
     board_id : {
         type : Number,
         required : true
+    },
+    date : {
+        type : Date,
+        required : true
     }
 });
 
-const board = mongoose.model('board', boardSchema);
+const board = Mongoose.model('board', boardSchema);
 
 export {boardSchema, board};
