@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import Mongoose from "mongoose";
 
-const { Schema } = mongoose;
+const { Schema } = Mongoose;
 const countSchema = ({
     cnt : {
         type: Number,
@@ -12,6 +12,6 @@ const countSchema = ({
     }
 });
 
-const count = mongoose.model('count', countSchema);
+const count = Mongoose.model('count', countSchema);
 
 export {countSchema, count};

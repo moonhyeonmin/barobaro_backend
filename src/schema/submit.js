@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import Mongoose from "mongoose";
 
-const { Schema } = mongoose;
+const { Schema } = Mongoose;
 const submitSchema = ({
     userInfo : {
         type : Map,
@@ -12,6 +12,6 @@ const submitSchema = ({
     // }
 });
 
-const submit = mongoose.model('submit', submitSchema);
+const submit = Mongoose.model('submit', submitSchema);
 
 export { submitSchema, submit };

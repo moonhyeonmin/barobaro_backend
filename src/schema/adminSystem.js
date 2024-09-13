@@ -1,7 +1,7 @@
-import mongoose, { mongo } from "mongoose";
+import Mongoose from "mongoose";
 import userInfo from "./src/schema/userInfo.js"
 
-const { Schemna } = mongoose;
+const { Schemna } = Mongoose;
 const adminSchema = new Schemna({
     majorid : {
         type: Number,
@@ -17,6 +17,6 @@ const adminSchema = new Schemna({
     }
 })
 
-const admin = mongoose.model('admin', adminSchema);
+const admin = Mongoose.model('admin', adminSchema);
 
 export {adminSchema, admin};
