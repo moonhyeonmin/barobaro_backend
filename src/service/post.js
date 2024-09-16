@@ -1,4 +1,12 @@
-import { Paginator } from './paginator/paginator.js';
+import { Paginator } from './paginator.js';
+import { ObjectId } from 'mongodb';
+
+const projectionOption = {
+    projection: {
+        paswword: 0,
+        "comments.password": 0,
+    },
+};
 
 async function list(collection, page, search) {
     const limit = 10;
@@ -11,6 +19,11 @@ async function list(collection, page, search) {
     // 페이지네이터 생성
     const paginator = Paginator({ total, limit: limit, page});
     return [posts, paginator];
-    }
+    };
 
-export default { list };
+async function getDetailPost(collection, id) {
+    return await collection.findOneAndUpdate({_id: ObjectId(id)}, {$inc: {views: 1 } }, projectionOption);
+};
+
+const post = { list, getDetailPost };
+export default { post };

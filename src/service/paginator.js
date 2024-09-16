@@ -19,7 +19,7 @@ function Paginator({ total, page, perPage = 10 }) {
     const hasNext = !isLastPage; // 다음 페이지 여부
 
     const paginator = {
-        pageList : _.range(startPage, endPage + 1); // 페이지 리스트
+        pageList : _.range(startPage, endPage + 1), // 페이지 리스트
         page,
         prevPage: hasPrev ? page - 1 : null, // 이전 페이지
         nextPage : hasNext ? page + 1 : null, // 다음 페이지
@@ -32,5 +32,6 @@ function Paginator({ total, page, perPage = 10 }) {
     };
     return paginator;
 };
+
 
 export { Paginator };
