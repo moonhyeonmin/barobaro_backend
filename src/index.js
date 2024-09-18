@@ -4,8 +4,7 @@ import dotenv, { parse } from "dotenv";
 import AuthRouter from "./router/auth.js"
 import { specs, swaggerUi } from "./swagger/config.js";
 import BoardRouter from "./router/board.js";
-import PostService from "./service/post.js";
-
+import { board } from "./schema/board.js";
 const app = express();
 dotenv.config();
 
@@ -24,17 +23,13 @@ app.on('uncaughtException', function (err) {
 const port = process.env.PORT;
 conn();
 
-app.get('/', async (req, res) => {
-    const page = parse(req.query.page) || 1; // 현재 페이지 번호
-    const search = req.query.serach || ""; // 검색어
-    try {
-        const [posts, paginator] = await PostService.list(collection, page, search);
 
-        res.render("index", { title: "게시판", posts, paginator });
-    } catch(error) {
-        console.error("Error fetching posts", error);
-        throw error;
-    }
+/**
+ * @path {GET} http://localhost:3000/
+ * @description 게시글 목록이 나오는 메인 페이지
+ */
+app.get('/', async (req, res) => {
+    res.render("home", board.list(board));
 });
 
 app.listen(port, (req, res) => {

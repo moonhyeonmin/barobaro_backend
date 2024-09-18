@@ -10,7 +10,7 @@ const userInfoSchema = new Schema({
         type: String,
         required: true
     },
-    role: {
+    major: {
         type: String,
         required: true
     },
