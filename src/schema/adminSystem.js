@@ -4,7 +4,7 @@ import userInfo from "./src/schema/userInfo.js"
 const { Schemna } = Mongoose;
 const adminSchema = new Schemna({
     majorid : {
-        type: Number,
+        type : Number,
         required: true
     },
     majorname : {
@@ -15,7 +15,7 @@ const adminSchema = new Schemna({
         type : userInfo, // 이 부분 맞는지 모르겠음
         required: true
     }
-})
+});
 
 const admin = Mongoose.model('admin', adminSchema);
 

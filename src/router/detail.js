@@ -3,7 +3,7 @@ import { post } from '../service/post.js';
 
 const DetailRouter = Router();
 
-DetailRouter.get('/detail/:id', async (req, res) => {
+DetailRouter.get('/detail/:boardid', async (req, res) => {
     const result = await post.getDetailPost(collection, req.params.id);
     res.render("detail", {
         title: "Detail",

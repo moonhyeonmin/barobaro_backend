@@ -28,8 +28,15 @@ conn();
  * @path {GET} http://localhost:3000/
  * @description 게시글 목록이 나오는 메인 페이지
  */
-app.get('/', async (req, res) => {
-    res.render("home", board.list(board));
+app.get('/main', async (req, res) => {
+    const result = await board.find()
+    console.log(result);
+    res.send(result);
+
+    // res.render("home", { // 내가 가져온 게시글을 home으로 렌더링 시켜서 띄우는 코드
+    //     title: "Home",
+    //     posts: result,
+    // });
 });
 
 app.listen(port, (req, res) => {
