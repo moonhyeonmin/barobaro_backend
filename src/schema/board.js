@@ -6,6 +6,10 @@ const boardSchema = new Schema({
         type: Number,
         required: true
     },
+    userName: {
+        type: String,
+        required: true
+    },
     title: {
         type : String,
         required: true
@@ -25,12 +29,8 @@ const boardSchema = new Schema({
     board_id : {
         type : Number,
         required : true
-    },
-    date : {
-        type : Date,
-        required : true
     }
-});
+}, {timestamps: true});
 
 const board = Mongoose.model('board', boardSchema);
 
