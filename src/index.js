@@ -5,12 +5,14 @@ import AuthRouter from "./router/auth.js"
 import { specs, swaggerUi } from "./swagger/config.js";
 import BoardRouter from "./router/board.js";
 import { board } from "./schema/board.js";
+import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
 
 app.use(
     express.urlencoded({ extended: true}),
     express.json(),
+    cookieParser()
 );
 app.use('/auth', AuthRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
