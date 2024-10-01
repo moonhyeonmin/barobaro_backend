@@ -5,7 +5,7 @@ import { board } from '../schema/board.js';
 const BoardRouter = Router();
 
 BoardRouter.post('/write', async (req, res) => {
-    const Post = req.body; // 바디 이렇게 받으면 안됨 고치자
+    const Post = req.body; 
 
     const result = await board.insertOne(Post);
     res.send(Post.board_id);
