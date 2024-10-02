@@ -29,8 +29,13 @@ const boardSchema = new Schema({
     board_id : {
         type : Number,
         required : true
-    }
-}, {timestamps: true});
+    },
+
+    // date: {
+    //     type: Date,
+    //     default: Date.now
+    // }
+});
 
 const board = Mongoose.model('board', boardSchema);
 
