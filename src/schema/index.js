@@ -7,7 +7,7 @@ const conn = () => {
 
     const DB_uri=process.env.DB_uri;
     
-    Mongoose.connect(DB_uri, {dbName: 'baro_db'})
+    Mongoose.connect(DB_uri)
     .then(() => console.log("MongoDB connected"))
     .catch((err) => {
         console.log(err);

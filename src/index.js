@@ -41,6 +41,6 @@ app.get('/main', async (req, res) => {
     // });
 });
 
-app.listen(port, (req, res) => {
-    console.log("listen at :  " + port);
+app.listen(process.env.serverUrl, (req, res) => {
+    console.log("listen at :  " + process.env.serverUrl);
 })

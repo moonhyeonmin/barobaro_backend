@@ -4,7 +4,7 @@ import { board } from '../schema/board.js';
 
 const BoardRouter = Router();
 
-BoardRouter.post('/write', async (req, res) => {
+BoardRouter.post('/', async (req, res) => {
     const Post = {
         type: req.body.type,
         userName: req.body.userName,
@@ -15,13 +15,15 @@ BoardRouter.post('/write', async (req, res) => {
         board_id: req.body.board_id,
     } 
 
-    const result = await board.insertOne(Post); // insertOne 왜 삽입 안됨?
-    res.send(Post.board_id);
+    const result = await board.create(Post); // insertOne 왜 삽입 안됨?
+    res.send(result);
 });
 
-BoardRouter.delete('/delete/:boardid', async (req, res) => { // 게시글 삭제
-    const result = await board.deleteOne({ _id: req.query.boardid });
-    
+BoardRouter.delete('/:board_id', async (req, res) => { // 게시글 삭제
+    const result = await board.deleteOne({ board_id: parseInt(req.params.board_id) });  
+    const test = await board.find();
+    console.log(test);
+    console.log(result);
     if (result.deletedCount === 1) {
         res.status(204).send({message: 'Delete Success'});
     }
@@ -30,8 +32,8 @@ BoardRouter.delete('/delete/:boardid', async (req, res) => { // 게시글 삭제
     }
 });
 
-BoardRouter.put('/edit/:boardid', async (req, res) => {
-    const result = await board.updateOne({ _id: req.params.id }, { $set: req.body});
+BoardRouter.put('/:board_id', async (req, res) => {
+    const result = await board.updateOne({ board_id: req.params.board_id }, { $set: req.body});
 
     if (result.modifiedCount === 1) {
         res.status(200).send({message: 'Update Success'});
