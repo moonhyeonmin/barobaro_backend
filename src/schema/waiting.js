@@ -1,7 +1,7 @@
 import Mongoose from "mongoose";
 
 const { Schema } = Mongoose;
-const countSchema = ({
+const waitingSchema = ({
     cnt : {
         type: Number,
         required: true
@@ -12,6 +12,6 @@ const countSchema = ({
     }
 });
 
-const count = Mongoose.model('count', countSchema);
+const waiting = Mongoose.model('waiting', waitingSchema);
 
-export {countSchema, count};
+export {waitingSchema, waiting};
