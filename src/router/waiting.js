@@ -1,18 +1,19 @@
 import express from 'express';
 import { waiting } from '../schema/waiting.js';
 import redis from 'redis';
-import {v4 as uuidv4} from 'uuid';
 
 const WaitingRouter = express.Router();
-const client = redis.createClient();
-
+const client = redis.createClient({
+    host: 'localhost',
+    port: 6379,
+});
 
 WaitingRouter.post('/', async (req, res) => {
     const QUEUE_KEY = req.body.board_id;
     const WAITING_KEY = 'waiting';
 
     const id = req.body.id;
-    const name = req.body.name;
+    const name = req.body.name; 
 
     const queueNumber = await client.incr(WAITING_KEY);
 
@@ -48,3 +49,5 @@ WaitingRouter.post('/status', async(req, res) => {
     });
 });
 
+
+export default WaitingRouter;
