@@ -6,7 +6,7 @@ import { specs, swaggerUi } from "./swagger/config.js";
 import BoardRouter from "./router/board.js";
 import { board } from "./schema/board.js";
 import cookieParser from "cookie-parser";
-import WaitingRouter from "./router/waiting.js";
+import {WaitingRouter, connRedis} from "./router/waiting.js";
 
 const app = express();
 dotenv.config();
@@ -27,6 +27,7 @@ app.on('uncaughtException', function (err) {
 
 const port = process.env.PORT;
 conn();
+connRedis();
 
 
 /**
