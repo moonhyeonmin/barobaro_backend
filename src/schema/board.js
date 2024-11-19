@@ -28,7 +28,7 @@ const boardSchema = new Schema({
     },
     board_id : {
         type : Number,
-        required : true
+        required : false
     },
 
     // date: {

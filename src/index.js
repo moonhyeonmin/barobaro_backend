@@ -35,7 +35,7 @@ connRedis();
  * @description 게시글 목록이 나오는 메인 페이지
  */
 app.get('/main', async (req, res) => {
-    const result = await board.find()
+    const result = await board.find() // 리스트로 감싸는 과정이 필요할 것 같은데
     console.log(result);
     res.send(result);
 
