@@ -5,7 +5,7 @@ import { createToken } from "./jwt.js";
 
 const AuthRouter = Router();
 
-AuthRouter.post("/login", async (req, res) => {
+AuthRouter.post("/login", async (req, res) => { 
     const { userid, password } = req.body;
 
     const delegator = sejongAuthDelegator();
@@ -15,7 +15,7 @@ AuthRouter.post("/login", async (req, res) => {
     try { // 로그인 성공시
         const profile = await delegator.getUserProfile(loginRequestDto);
         console.log(profile);
-        if (userInfo.findOne({id : profile.id})) { // 내 디비에 이 회원의 정보가 있으면
+        if (userInfo.findOne({id : profile.id})) { // 내 디비에 이 회원의 정보가 있으면 코드 수정 필요
             // 로그인 성공 후 토큰을 넘겨줌
             const payload = {
                 userid : profile.id,
@@ -23,8 +23,7 @@ AuthRouter.post("/login", async (req, res) => {
 
             const token = createToken(payload);
 
-            res.cookie('AccessToken', token, { httpOnly: true, maxAge : 1000 * 60 * 60 });   
-            res.redirect('/main');
+            res.send(profile);
         }
         else { // 내 디비에 이 회원의 정보가 없으면
             // major, id만 있는 상태로 디비에 저장, 이후 register에서 나머지 정보 추가
@@ -48,7 +47,7 @@ AuthRouter.post("/register", async (req, res) => { // 여기서 토큰 넘겨야
         const token = createToken(payload);
 
         res.cookie('AccessToken', token, { httpOnly: true, maxAge : 1000 * 60 * 60 });
-        res.redirect('/main'); // 토큰 발급 끝나면 메인화면으로 넘어감
+        res.redirect('/login'); // 토큰 발급 끝나면 메인화면으로 넘어감
     } catch (err) {
         res.status(400).send(err);
     }
