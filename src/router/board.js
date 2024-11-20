@@ -25,7 +25,7 @@ BoardRouter.post('/write', async (req, res) => { // board_id 생성하는 코드
         image: req.body.image,
         major: req.body.major,
         board_id: getNextSequence('req.body.title')
-    } 
+    }
     const result = await board.create(Post); // insertOne 왜 삽입 안됨?
     res.send(result);
 });
